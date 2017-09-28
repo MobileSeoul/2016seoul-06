@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <item
+        android:id="@+id/shuffle2"
+        android:icon="@drawable/ic_http_white_48dp"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/refresh"/>
+    
+      <item
+        android:id="@+id/shuffle"
+        android:icon="@drawable/ic_action_shuffle"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/refresh"/>
+      
+      
+    <item
+        android:id="@+id/social"
+        android:icon="@drawable/ic_action_share"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/refresh"/>
+    
+  
+    
+    
+    
+   
+
+</menu>

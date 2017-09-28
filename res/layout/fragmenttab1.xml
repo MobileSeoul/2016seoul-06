@@ -1,0 +1,433 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    		xmlns:tools="http://schemas.android.com/tools"
+    		android:layout_width="match_parent"
+   			 android:layout_height="match_parent"
+   			 android:orientation="vertical">
+
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cym5240.kis.AutoScrollPagerFragment">
+
+    <me.angeldevil.autoscrollviewpager.AutoScrollViewPager
+        android:id="@+id/scroll_pager"
+        android:layout_width="match_parent"
+        android:layout_height="240dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/scroll_pager"
+        android:gravity="center_vertical"
+        android:background="@color/bg_title"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+           android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="5dp" />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/indicator"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    
+    <ImageView
+        android:id="@+id/randomimg"
+        android:layout_width="wrap_content"
+        android:layout_height="370dp"
+        android:layout_below="@+id/scroll_pager"
+        android:background="#DCDCDC"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        />
+
+    <ImageView
+        android:id="@+id/iconimg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/randomimg"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/atom" />
+    
+    <TextView
+        android:id="@+id/texttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/backicon"
+        android:layout_alignTop="@+id/iconimg"
+        android:layout_marginLeft="5dp"
+        android:layout_toLeftOf="@+id/backicon"
+        android:layout_toRightOf="@+id/iconimg"
+        android:text="함백산 중턱에서"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textyear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iconimg"
+        android:layout_toRightOf="@+id/iconimg"
+        android:text="2016-03-03"
+        android:textColor="#696969"
+        android:layout_marginLeft="5dp"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+    
+       <ImageView
+       android:id="@+id/backicon"
+       android:layout_width="25dp"
+       android:layout_height="25dp"
+                  android:layout_marginRight="15dp"
+                   
+       android:layout_above="@+id/textyear"
+       android:layout_alignParentRight="true"
+       android:src="@drawable/arrow_back2" />
+       
+       <ImageView
+           android:id="@+id/mainimg"
+              android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:adjustViewBounds="true"
+    android:scaleType="centerCrop"
+    android:layout_marginTop="11dp"
+    
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentRight="true"
+           android:layout_below="@+id/iconimg"
+           
+           android:src="@drawable/jajak" />
+       
+       <TextView
+           android:id="@+id/editText1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="함백산 중턱에서"
+           android:textColor="#696969"
+           android:textStyle="bold"
+           android:layout_below="@+id/mainimg"
+           android:layout_centerHorizontal="true"
+           android:gravity="center_horizontal" >
+       </TextView>
+       
+       <TextView
+           android:id="@+id/from"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/textname"
+           android:layout_alignParentLeft="true"
+           android:layout_toLeftOf="@+id/textname"
+           android:gravity="left"
+          
+           android:text="주소 : 전라북도 남원시 하정동  181-1 7/2"
+           android:textColor="#696969"
+           android:textSize="11dp" />
+       
+       <ImageView
+           android:id="@+id/line"
+           android:layout_width="wrap_content"
+           android:layout_height="0.5dp"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentRight="true"
+           android:layout_above="@+id/textname"
+           android:background="#C0C0C0" />
+       
+       <TextView
+       android:id="@+id/textname"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:gravity="right"
+       android:layout_alignBottom="@+id/randomimg"
+       android:layout_alignParentRight="true"
+       android:textColor="#696969"
+       android:background="#DCDCDC"
+       android:textSize="11dp"
+       android:text="등록자 : 천영민" />
+       
+          <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/randomimg"
+        android:layout_height="match_parent" 
+        >
+    
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/chsa" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/chgon" />
+    </LinearLayout>
+    
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="0dp" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/teji" />
+    
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fishc" />
+    </LinearLayout>
+    
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+		android:layout_below="@+id/imageView3"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mbg" />
+    
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gjg" />
+    </LinearLayout>
+    
+    
+        <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ssnr" />
+    
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/msgy" />
+    </LinearLayout>
+            <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+      <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/aquar" />
+    
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dina" />
+    </LinearLayout>
+    
+                    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+    
+       <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/kisa" />
+    
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/jasa" />
+    </LinearLayout>
+            <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+    
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dys" />
+    
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ddp" />
+    </LinearLayout>
+            <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+      <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/anime" />
+    
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/seokid" />
+    </LinearLayout>
+            <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+    
+     <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pororo" />
+     
+     <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/exaq" />
+     </LinearLayout>
+             <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+     
+     <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/jjg" />
+     
+     <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/emg" />
+     </LinearLayout>
+             <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+     
+      <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gss" />
+      
+      <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dmu" />
+      </LinearLayout>
+              <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:layout_weight="1"
+     android:orientation="horizontal">
+      
+       <ImageView
+           android:id="@+id/imageView23"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+		android:layout_below="@+id/imageView21"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sgh" />
+       
+       <ImageView
+           android:id="@+id/imageView24"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="180dp"
+ 		android:layout_alignTop="@+id/imageView23"
+        android:layout_toRightOf="@+id/imageView23"
+        android:scaleType="centerCrop"
+        android:src="@drawable/grg" />
+       </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+</ScrollView>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="50dip"
+    android:layout_gravity="center_vertical"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+   <TextView
+       android:id="@+id/ip_text"
+       style="@android:style/TextAppearance.Widget.TextView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+       android:layout_centerVertical="true"
+       android:clickable="true"
+       android:layout_marginRight="82dp"
+       android:text="닫기" />
+
+   <TextView
+       android:id="@+id/ip_text2"
+       style="@android:style/TextAppearance.Widget.TextView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBaseline="@+id/ip_text"
+       android:layout_alignBottom="@+id/ip_text"
+       android:clickable="true"
+       android:layout_alignParentRight="true"
+       android:text="상세정보" />
+
+</RelativeLayout>

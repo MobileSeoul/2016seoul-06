@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cym5240.kis"
+    android:versionCode="67"
+    android:versionName="@string/ver"
+     >
+     
+    
+    
+     <uses-feature android:name="android.hardware.camera"></uses-feature>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="com.cym5240.kis.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+	<uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+     
+
+    <!-- GCM 관련 퍼미션 -->
+    <permission
+        android:name="com.cym5240.kis.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <!-- GCM 받기 -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- GCM을 받으려면 구글 계정 필요 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- 메시지 받을 때 wake up 하기 위해 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" >
+    </uses-permission>
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:name="com.cym5240.kis.ModApplication"
+       android:largeHeap="true"
+         android:icon="@drawable/pcb"
+        android:label="@string/app_name"
+        android:launchMode="singleTask"
+         android:allowBackup="true"
+         android:theme="@style/Theme.Favorite" >
+        
+      <!-- 메시지 받을 때 wake up 하기 위해 -->
+        <!-- 알림 서비스(시작) -->
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.cym5240." />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.cym5240.kis.GCMIntentService" />
+        <!-- 알림 서비스(끝) -->
+        <activity
+            android:name="com.cym5240.kis.introactivity"
+            android:theme="@android:style/Theme.NoTitleBar" 
+ 
+           >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+  
+            
+            
+        </activity>
+        
+        
+        <activity
+            android:name="com.cym5240.kis.MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="@string/kakao_scheme" android:host="@string/kakaolink_host" />
+            </intent-filter> 
+  			
+           </activity>
+        <activity
+            android:name="com.cym5240.kis.main2"
+            android:icon="@drawable/ic_launcher_simple"
+            android:screenOrientation="portrait" />
+         <activity
+            android:name="com.cym5240.kis.info"
+            android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/app_info"
+             android:screenOrientation="portrait" 
+           />
+         
+
+            <activity
+            android:name="com.cym5240.kis.setting"
+            android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/setting" 
+             android:screenOrientation="portrait"
+           />
+             <activity
+            android:name="com.cym5240.kis.GalleryView"
+            android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/photo" 
+             android:screenOrientation="portrait"
+           />
+               <activity
+            android:name="com.cym5240.kis.page.ProfileActivity"
+           android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/app_name" 
+              android:theme="@style/AppTheme.TranslucentActionBar"
+              android:screenOrientation="portrait" 
+           />
+               
+                          <activity
+            android:name="com.cym5240.kis.page.ProfileEdit"
+            android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/edit_profile" 
+             android:screenOrientation="portrait"
+           />
+                        <activity
+            android:name="com.cym5240.kis.page.ProfileInfo"
+            android:icon="@drawable/ic_launcher_simple"
+            android:label="@string/user_info"
+            android:screenOrientation="portrait" />
+                        
+                        
+                                           <activity
+            android:name="com.cym5240.kis.page.privacy_category"
+            android:icon="@drawable/ic_launcher_simple"
+            android:label="@string/privacy_content"
+            android:screenOrientation="portrait" />
+               
+               
+                     <activity
+            android:name="com.cym5240.kis.page.page_create"
+            android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/create_page"
+             android:screenOrientation="portrait" 
+           />
+                     
+                             <activity
+            android:name="com.cym5240.kis.page.document_write"
+            android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/write" 
+             android:screenOrientation="portrait"
+           />
+                     
+                     
+                     <activity
+            android:name="com.cym5240.kis.page.document_read"
+            android:icon="@drawable/ic_launcher_simple"
+             android:label="@string/app_name" 
+             android:screenOrientation="portrait"
+           />
+        
+         <activity
+            android:name="com.cym5240.kis.document_read"
+            android:icon="@drawable/ic_launcher_simple"
+            android:label="@string/app_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.cym5240.kis.start.welcome"
+             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock.NoActionBar" />
+        
+        <activity
+            android:name="com.cym5240.kis.tarks_account_login"
+            android:icon="@drawable/tarks_white"
+            android:label="@string/tarks_account"
+            android:theme="@style/Theme.Sherlock"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.cym5240.kis.start.join"
+            android:icon="@drawable/ic_launcher_simple"
+            android:label="@string/sign_up" 
+            android:screenOrientation="portrait"/>
+        
+            <activity
+            android:name="com.cym5240.kis.like.favorite_category"
+            android:icon="@drawable/ic_launcher_simple"
+            android:theme="@style/Theme.Favorite.Light.Dialog"
+            android:label="@string/add_favorite" 
+            android:screenOrientation="portrait"/>
+            
+        <activity
+            android:name="com.cym5240.kis.CropManager"
+            android:icon="@drawable/ic_launcher_simple"
+            android:label="@string/cut_image"
+            android:screenOrientation="portrait" />
+        
+          <meta-data android:name="com.google.android.maps.v2.API_KEY" 
+            android:value="AIzaSyAUH2MxpXx0IaFtCgHthFX4tdkcv2TvylY"/>
+ 
+         <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+         <activity android:name="com.cym5240.kis.actionbar"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+         
+         <activity android:name="com.cym5240.kis.actionbar2"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+
+           <activity android:name="com.cym5240.kis.actionbar3"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+           
+           <activity android:name="com.cym5240.kis.actionbar4"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+           
+            <activity android:name="com.cym5240.kis.actionbar5"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+            
+                        <activity android:name="com.cym5240.kis.actionbar6"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                        
+         <activity android:name="com.cym5240.kis.actionbar7"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+         
+         
+          <activity android:name="com.cym5240.kis.actionbar8"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+          
+           <activity android:name="com.cym5240.kis.actionbar9"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+           
+           <activity android:name="com.cym5240.kis.actionbar10"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+           
+           <activity android:name="com.cym5240.kis.actionbar11"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+           
+           <activity android:name="com.cym5240.kis.actionbar12"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+           
+            <activity android:name="com.cym5240.kis.actionbar13"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+            
+            <activity android:name="com.cym5240.kis.actionbar14"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+            
+             <activity android:name="com.cym5240.kis.actionbar15"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+             
+             <activity android:name="com.cym5240.kis.actionbar16"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+             
+              <activity android:name="com.cym5240.kis.actionbar17"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.actionbar18"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.actionbar19"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.actionbar20"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.actionbar21"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.actionbar22"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.actionbar23"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.actionbar24"
+           		   android:theme="@style/AppTheme.TranslucentActionBar"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+              <activity android:name="com.cym5240.kis.MiniWebActivity"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+              
+                   <activity android:name="com.cym5240.kis.MiniWebActivity2"
+                    
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                   
+                    <activity android:name="com.cym5240.kis.MiniWebActivity3"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                    
+                    <activity android:name="com.cym5240.kis.MiniWebActivity4"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                    
+                    <activity android:name="com.cym5240.kis.MiniWebActivity5"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                    
+                    <activity android:name="com.cym5240.kis.MiniWebActivity6"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                    
+                    <activity android:name="com.cym5240.kis.MiniWebActivity7"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                    
+                    <activity android:name="com.cym5240.kis.random"
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                    
+                     <activity
+            android:name="com.cym5240.kis.MainActivity2"
+            android:label="@string/app_name"
+            
+            android:theme="@style/Theme.Sherlock.NoActionBar" 
+            android:screenOrientation="portrait">   </activity>
+   
+                         <activity android:name="com.cym5240.kis.mountload"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                         
+                         <activity android:name="com.cym5240.kis.mountload_2"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                         
+                         <activity android:name="com.cym5240.kis.matload"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.MainActivity"
+           		   android:screenOrientation="portrait"></activity>
+                         
+                         
+                         
+                         
+                          <activity android:name="com.cym5240.web.websan"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan2"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan3"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan4"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan5"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan6"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan7"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan8"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          
+                          <activity android:name="com.cym5240.web.websan9"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan10"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan11"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan12"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan13"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan14"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan15"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan16"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan17"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan18"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan19"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan20"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan21"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan22"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan23"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan24"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan25"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan26"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan27"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan28"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web.websan29"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                          
+                           <activity android:name="com.cym5240.web.websan30"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                           
+                            <activity android:name="com.cym5240.web.websan31"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                            
+                             <activity android:name="com.cym5240.web.websan32"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                             
+                              <activity android:name="com.cym5240.web.websan33"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                              
+                               <activity android:name="com.cym5240.web.websan34"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                               
+                                <activity android:name="com.cym5240.web.websan35"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                                
+                                 <activity android:name="com.cym5240.web.websan36"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                                 
+                                  <activity android:name="com.cym5240.web.websan37"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                                  
+                                   <activity android:name="com.cym5240.web.websan38"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload"
+           		   android:screenOrientation="portrait"></activity>
+                        
+                           
+                           
+                          <activity android:name="com.cym5240.kis.opensource"
+                              android:parentActivityName="com.cym5240.kis.MainActivity"
+                              android:screenOrientation="portrait"></activity>
+                   
+                          
+                          
+                          <activity android:name="com.cym5240.webmat.websan"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan2"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan3"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan4"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan5"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan6"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan7"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan8"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          
+                          <activity android:name="com.cym5240.webmat.websan9"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan10"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan11"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan12"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan13"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan14"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan15"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan16"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan17"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan18"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan19"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan20"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan21"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan22"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan23"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan24"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan25"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan26"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan27"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan28"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.webmat.websan29"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                          
+                           <activity android:name="com.cym5240.webmat.websan30"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                           
+                           <activity android:name="com.cym5240.webmat.websan31"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                           
+                           <activity android:name="com.cym5240.webmat.websan32"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                           
+                           <activity android:name="com.cym5240.webmat.websan33"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                           
+                           <activity android:name="com.cym5240.webmat.websan34"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                           
+                           <activity android:name="com.cym5240.webmat.websan35"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                           
+                           <activity android:name="com.cym5240.webmat.websan36"
+           
+           android:parentActivityName="com.cym5240.kis.matload"
+           android:screenOrientation="portrait"></activity>
+                           
+                           
+                           
+                           
+                           <activity android:name="com.cym5240.url.websan"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan2"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar2"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan3"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar3"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan4"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar4"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan5"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar5"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan6"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar6"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan7"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar7"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan8"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar8"
+           android:screenOrientation="portrait"></activity>
+                          
+                          <activity android:name="com.cym5240.url.websan9"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar9"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan10"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar10"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan11"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar11"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan12"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar12"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan13"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar13"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan14"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar14"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan15"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar15"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan16"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar16"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan17"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar17"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan18"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar18"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan19"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar19"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan20"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar20"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan21"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar21"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan22"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar22"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan23"
+           
+           android:parentActivityName="com.cym5240.kis.actionbar23"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url.websan24"
+                              android:parentActivityName="com.cym5240.kis.actionbar24"
+           android:screenOrientation="portrait"></activity>
+           
+            
+                          
+                          
+                          
+                          
+                          
+                          
+                          <activity android:name="com.cym5240.url2.websan"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan2"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan3"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan4"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan5"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan6"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan7"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan8"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          
+                          <activity android:name="com.cym5240.url2.websan9"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan10"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan11"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan12"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan13"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan14"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan15"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan16"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan17"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan18"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan19"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan20"
+           
+           android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.url2.websan21"
+                              android:parentActivityName="com.cym5240.kis.MainActivity"
+           android:screenOrientation="portrait"></activity>
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                           <activity android:name="com.cym5240.web_2.websan"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan2"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan3"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan4"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan5"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan6"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan7"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan8"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          
+                          <activity android:name="com.cym5240.web_2.websan9"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan10"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan11"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan12"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan13"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan14"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan15"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan16"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan17"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan18"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan19"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan20"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan21"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan22"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan23"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan24"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan25"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan26"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan27"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan28"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          <activity android:name="com.cym5240.web_2.websan29"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                          
+                           <activity android:name="com.cym5240.web_2.websan30"
+           		  
+           		   android:parentActivityName="com.cym5240.kis.mountload_2"
+           		   android:screenOrientation="portrait"></activity>
+                              
+                              
+     
+           
+         <meta-data
+            android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key" />
+         
+
+      
+         
+         
+    </application>
+
+</manifest>
